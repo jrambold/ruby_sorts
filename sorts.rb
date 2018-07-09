@@ -33,6 +33,25 @@ def insertion_sort(array)
   array
 end
 
+# recursive insertion sort
+def insertion_sort_rec(array)
+  insertion_rec_helper(array, array.length-1)
+end
+
+def insertion_rec_helper(array, n)
+  if n > 0
+     insertion_rec_helper(array,n-1)
+     x = array[n]
+     j = n-1
+     while j >= 0 and array[j] > x
+         array[j+1] = array[j]
+         j = j-1
+     end
+     array[j+1] = x
+  end
+  array
+end
+
 # selection sort
 def selection_sort(array)
   # advance the position through the entire array
@@ -55,25 +74,6 @@ def selection_sort(array)
           array[j] = array[min_index]
           array[min_index] = temp
       end
-  end
-  array
-end
-
-# recursive insertion sort
-def insertion_sort_rec(array)
-  insertion_rec_helper(array, array.length-1)
-end
-
-def insertion_rec_helper(array, n)
-  if n > 0
-     insertion_rec_helper(array,n-1)
-     x = array[n]
-     j = n-1
-     while j >= 0 and array[j] > x
-         array[j+1] = array[j]
-         j = j-1
-     end
-     array[j+1] = x
   end
   array
 end
@@ -223,8 +223,8 @@ end
 
 puts bubble_sort(given).join(' ')
 puts insertion_sort(given).join(' ')
-puts selection_sort(given).join(' ')
 puts insertion_sort_rec(given).join(' ')
+puts selection_sort(given).join(' ')
 puts merge_sort(given).join(' ')
 puts merge_sort_rec(given).join(' ')
 puts quick_sort(given).join(' ')
